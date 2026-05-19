@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Welcome, {{ student_name }}</h2>
+
+    <a href="/complaint" class="btn">Raise Complaint</a>
+    <a href="/logout" class="btn admin">Logout</a>
+
+    <h3>Your Complaints</h3>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Room No</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Status</th>
+        </tr>
+        {% for c in complaints %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.room_no }}</td>
+            <td>{{ c.category }}</td>
+            <td>{{ c.description }}</td>
+            <td>{{ c.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

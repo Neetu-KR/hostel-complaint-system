@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Admin Dashboard</h2>
+
+    <a href="/admin_logout" class="btn admin">Logout</a>
+
+    <h3>All Complaints</h3>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Student</th>
+            <th>Room No</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for c in complaints %}
+        <tr>
+            <td>{{ c.id }}</td>
+            <td>{{ c.student_name }}</td>
+            <td>{{ c.room_no }}</td>
+            <td>{{ c.category }}</td>
+            <td>{{ c.description }}</td>
+            <td><b>{{ c.status }}</b></td>
+
+            <td>
+                <form method="POST" action="/update_status/{{ c.id }}">
+                    <select name="status">
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Solved">Solved</option>
+                    </select>
+                    <button type="submit" class="btn">Update</button>
+                </form>
+            </td>
+
+            <td>
+                <a href="/delete_complaint/{{ c.id }}" class="btn admin">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

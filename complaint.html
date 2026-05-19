@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Raise Complaint</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Raise Complaint</h2>
+
+    <form method="POST">
+        <input type="text" name="room_no" placeholder="Enter Room Number" required><br>
+
+        <select name="category" required>
+            <option value="">Select Category</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Water">Water</option>
+            <option value="Cleaning">Cleaning</option>
+            <option value="Wifi">WiFi</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Other">Other</option>
+        </select><br>
+
+        <textarea name="description" placeholder="Enter Complaint Description" required></textarea><br>
+
+        <button type="submit" class="btn">Submit Complaint</button>
+    </form>
+
+    <a href="/student_dashboard" class="btn admin">Back</a>
+</div>
+</body>
+</html>
